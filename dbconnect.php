@@ -1,6 +1,9 @@
 <?php
 session_start();
-require __DIR__ . '/vendor/autoload.php'; //загрузка всех установленных библиотек
+//  require __DIR__ . '/vendor/autoload1.php'; //загрузка всех установленных библиотек
+if ( file_exists(dirname(__FILE__).'/vendor/autoload.php') ) {
+    require_once dirname(__FILE__).'/vendor/autoload.php';
+}
 use Dotenv\Dotenv;                        //импорт класса Dotenv из пространства имен dotenv
 if (file_exists(__DIR__."/.env"))
 {
@@ -10,7 +13,7 @@ if (file_exists(__DIR__."/.env"))
 }
 // подключение к БД
 try {
-    $conn = new PDO("mysql:host=$_ENV[localhost];dbname=$_ENV[dbname]", $_ENV['dbuser'], $_ENV['NO']);
+    $conn = new PDO("mysql:host=$_ENV[localhost];dbname=$_ENV[dbname];charset=utf8mb4", $_ENV['dbuser'], $_ENV['YES']);
     // set the PDO error mode to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
