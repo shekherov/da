@@ -24,27 +24,27 @@
                         <a class="nav-link" href="index.php?page=c">Категории</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=t">Блюда</a>
+                        <a class="nav-link" href="index.php?page=t">Задачи</a>
                     </li>
                 </ul>
 
 
-                <?php
-                if (!isset($_SESSION['login']) )
-                {
-                    echo '<form class="d-flex" method="post">';
-                    echo '<input class="form-control me-2" type="text" placeholder="Логин" name="login" aria-label="Логин"/>';
-                    echo '<input class="form-control me-2" type="text" placeholder="Пароль" name="password" aria-label="Пароль"/>';
-                    echo '<button class="btn btn-outline-success" type="submit">Войти</button>';
+<?php
+    if (!isset($_SESSION['login']) )
+    {
+        echo '<form class="d-flex" method="post">';
+        echo '<input class="form-control me-2" type="text" placeholder="Логин" name="login" aria-label="Логин"/>';
+        echo '<input class="form-control me-2" type="text" placeholder="Пароль" name="password" aria-label="Пароль"/>';
+        echo '<button class="btn btn-outline-success" type="submit">Войти</button>';
 
-                    echo '</form>';
-                }
-                else {
-                    echo '<a class="nav-link" href="#">Привет, ' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . '</a>';
-                    echo '<a class="btn btn-outline-success my-2 my-sm-0" href="index.php?logout=1">Выйти</a>';
+        echo '</form>';
+    }
+    else {
+        echo '<a class="nav-link" href="#">Привет, ' . $_SESSION['firstname'] . ' ' . $_SESSION['lastname'] . '</a>';
+        echo '<a class="btn btn-outline-success my-2 my-sm-0" href="index.php?logout=1">Выйти</a>';
 
-                }
-                ?>
+    }
+?>
 
 
 

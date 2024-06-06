@@ -1,13 +1,13 @@
-<h1>Категории задач:</h1>
+<h1>Категории Блюд:</h1>
 <?php
-$result = $conn->query("SELECT categories.id_categories AS id, categories.name AS cname, categories.picture_url, count(dishes.id_dishes) as C FROM categories LEFT OUTER JOIN dishes ON dishes.id_categories=categories.id_categories WHERE dishes.id_categories=".$_SESSION['id']." GROUP BY categories.id_categories");
+$result = $conn->query("SELECT categories.id AS id, categories.name AS cname, category.picture_url, count(dishes.id) as C FROM category LEFT OUTER JOIN dishes ON dishes.id_categories=categories.id_categories WHERE categories.id_user=".$_SESSION['id']." GROUP BY categories.id_categories");
 
 while ($row = $result->fetch()) {
 //style="max-width: 18rem;"
     echo'
         
         <div class="card border-dark mb-3" >
-            <div class="card-header">Количество задач: ' . $row['C'] . '</div>
+            <div class="card-header">Количество блюд: ' . $row['C'] . '</div>
             <div class="card-body text-dark">
                 <div class="row g-0">
                     <div class="col-md-1">  
@@ -16,7 +16,6 @@ while ($row = $result->fetch()) {
                     <div class="col-md-7">
                     <a class="nav-link" href="/index.php?page=t" >
                         <h5 class="card-title">' . $row['cname'] . '</h5>
-                        <p class="card-text">' . $row['cdesc'] . '</p>
                     </a>
                     </div>
                     <div class="col-md-1">
@@ -50,3 +49,7 @@ while ($row = $result->fetch()) {
         </label>
     <p><input type="submit" value="Создать">
 </form>
+
+
+
+
