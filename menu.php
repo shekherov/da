@@ -24,7 +24,7 @@
                         <a class="nav-link" href="index.php?page=c">Категории</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=t">Задачи</a>
+                        <a class="nav-link" href="index.php?page=t">Блюда</a>
                     </li>
                 </ul>
 

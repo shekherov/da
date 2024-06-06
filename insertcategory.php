@@ -16,12 +16,11 @@ if (strlen($_POST['name']) >= 3){
         $picture_url = '/assets/calendar.png';
     }
     try {
-        $sql = 'INSERT INTO category(name, description, picture_url, id_user) VALUES(:name,:description,:picture_url,:id_user)';
+        $sql = 'INSERT INTO categories(name, id_categories, picture_url) VALUES(:name,:Cooking_Method,:picture_url,:id_categories)';
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':name', $_POST['name']);
-        $stmt->bindValue(':description', $_POST['description']);
+        $stmt->bindValue(':id_categories', $_POST['id_categories']);
         $stmt->bindValue(':picture_url', $picture_url);
-        $stmt->bindValue(':id_user', $_SESSION['id']);
         $stmt->execute();
         $_SESSION['msg'] = "Категория успешно добавлена";
         // return generated id
@@ -34,5 +33,5 @@ if (strlen($_POST['name']) >= 3){
 else $_SESSION['msg'] = "Ошибка добавления категории: имя категории должно содержать не менее 3х символов";
 
 // перенаправление на страницу категорий
-header('Location: http://todolist/index.php?page=c');
+header('Location: http://klek/index.php?page=t#');
 exit( );

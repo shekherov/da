@@ -4,7 +4,7 @@ require "dbconnect.php";
 
 
 try {
-    $sql = 'DELETE FROM task WHERE id=:id';
+    $sql = 'DELETE FROM dishes WHERE id_dishes=:id';
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(':id', $_GET['id']);
     $stmt->execute();
@@ -15,6 +15,6 @@ try {
     $_SESSION['msg'] = "Ошибка удаления задачи: " . $error->getMessage();
 }
 // перенаправление на главную страницу приложения
-header('Location: http://todolist/index.php?page=t');
+header('Location: http://klek/index.php?page=t#');
 exit( );
 

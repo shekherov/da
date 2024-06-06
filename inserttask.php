@@ -3,26 +3,24 @@ require "dbconnect.php";
 if (strlen($_POST['name']) >= 3){
 
     try {
-        $sql = 'INSERT INTO task(name,description,created_at,deadline,id_category,id_user) VALUES(:name,:description,:created_at,:deadline,:id_category,:id_user)';
+        $sql = 'INSERT INTO dishes(name,Cooking_Method,Cooking_Time_in_min,id_categories) VALUES(:name,:Cooking_Method,:Cooking_Time_in_min,:id_categories)';
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':name', $_POST['name']);
-        $stmt->bindValue(':description', $_POST['description']);
-        $stmt->bindValue(':created_at', date('Y-m-d H:i:s', time()));
-        $stmt->bindValue(':deadline', $_POST['deadline']);
-        $stmt->bindValue(':id_category', $_POST['id_category']);
-        $stmt->bindValue(':id_user', $_SESSION['id']);
+        $stmt->bindValue(':Cooking_Method', $_POST['Cooking_Method']);
+        $stmt->bindValue(':Cooking_Time_in_min', $_POST['Cooking_Time_in_min']);
+        $stmt->bindValue(':id_categories', $_POST['id_categories']);
         $stmt->execute();
-        $_SESSION['msg'] = "Задача успешно добавлена";
+        $_SESSION['msg'] = "Блюдо успешно добавлено";
         // return generated id
         // $id = $pdo->lastInsertId('id');
 
     } catch (PDOexception $error) {
-        $_SESSION['msg'] = "Ошибка добавления задачи: " . $error->getMessage();
+        $_SESSION['msg'] = "Ошибка добавления блюда: " . $error->getMessage();
     }
 
 }
-else $_SESSION['msg'] = "Ошибка добавления задачи: имя задачи должно содержать не менее 3х символов";
+else $_SESSION['msg'] = "Ошибка добавления блюда: имя задачи должно содержать не менее 3х символов";
 
 // перенаправление на главную страницу приложения
-header('Location: http://todolist/index.php?page=t');
+header('Location: http://klek/index.php?page=t#');
 exit( );

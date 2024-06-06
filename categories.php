@@ -1,6 +1,6 @@
 <h1>Категории задач:</h1>
 <?php
-$result = $conn->query("SELECT categories.id AS id, categories.name AS cname, categories.picture_url, count(task.id) as C FROM category LEFT OUTER JOIN task ON task.id_category=category.id WHERE category.id_user=".$_SESSION['id']." GROUP BY category.id");
+$result = $conn->query("SELECT categories.id_categories AS id, categories.name AS cname, categories.picture_url, count(dishes.id_dishes) as C FROM categories LEFT OUTER JOIN dishes ON dishes.id_categories=categories.id_categories WHERE dishes.id_categories=".$_SESSION['id']." GROUP BY categories.id_categories");
 
 while ($row = $result->fetch()) {
 //style="max-width: 18rem;"
