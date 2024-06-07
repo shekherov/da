@@ -1,6 +1,6 @@
 <h1>Категории Блюд:</h1>
 <?php
-$result = $conn->query("SELECT categories.id AS id, categories.name AS cname, category.picture_url, count(dishes.id) as C FROM category LEFT OUTER JOIN dishes ON dishes.id_categories=categories.id_categories WHERE categories.id_user=".$_SESSION['id']." GROUP BY categories.id_categories");
+$result = $conn->query("SELECT categories.id_categories AS id, categories.name AS cname, count(dishes.id_dishes) as C FROM categories LEFT OUTER JOIN dishes ON categories.id_categories=dishes.id_categories WHERE categories.id_user=".$_SESSION['id']." GROUP BY categories.id_categories");
 
 while ($row = $result->fetch()) {
 //style="max-width: 18rem;"

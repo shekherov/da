@@ -6,14 +6,11 @@
                 Имя блюда: <input type="text" name="name">
             </label>
         <p><label>
-                Описание блюда: <input type="text" name="description">
-            </label>
-        <p><label>
-                Категория: <select name="id_category">
+                Категория: <select name="id_categories">
                     <?
                     $result = $conn->query("SELECT * FROM categories");
                     while ($row = $result->fetch()) {
-                        echo '<option value='.$row['id'].'>'.$row['name'].'</option>';
+                        echo '<option value='.$row['id_categories'].'>'.$row['name'].'</option>';
 
                     }
                     ?>

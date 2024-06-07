@@ -9,7 +9,7 @@ if (strlen($_POST['name']) >= 3){
             $stmt->bindValue(':Cooking_Method', $_POST['Cooking_Method']);
             $stmt->bindValue(':Cooking_Time_in_min', $_POST['Cooking_Time_in_min']);
             $stmt->bindValue(':id_categories', $_POST['id_categories']);
-            $stmt->bindValue(':id_user', $_SESSION['id']);
+            $stmt->bindValue(':id_user', $_SESSION['id_user']);
             $stmt->execute();
             $_SESSION['msg'] = "Блюдо успешно добавлено";
             // return generated id

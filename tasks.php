@@ -4,7 +4,7 @@
 
 
 
-<h1>Задачи:</h1>
+<h1>Блюда:</h1>
     <div class="list-group">
 
 
@@ -21,7 +21,7 @@
             <img src="'.$row['picture_url'].'" alt="twbs" width="32" height="32" class=flex-shrink-0">
             <div class="d-flex gap-2 w-100 justify-content-between">
                 <div>
-                    <h6 class="mb-0">'.$row['dname'].'</h6>
+                    <h6 class="mb-0">'.$row['cname'].'</h6>
                 </div>
             </div>
         </a>
