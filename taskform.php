@@ -1,15 +1,12 @@
 
-    <h2>Создание задачи</h2>
+    <h2>Создание блюда</h2>
     <form method="post" action="inserttask.php" enctype="multipart/form-data">
 
         <p><label>
-                Имя задачи: <input type="text" name="name">
+                Имя блюда: <input type="text" name="name">
             </label>
         <p><label>
-                Описание задачи: <input type="text" name="description">
-            </label>
-        <p><label>
-                Выполнить до: <input type="datetime-local" name="deadline">
+                Описание блюда: <input type="text" name="description">
             </label>
         <p><label>
                 Категория: <select name="id_category">
