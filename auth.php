@@ -8,9 +8,6 @@ if (isset($_POST["login"]) and $_POST["login"]!='')
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':login', $_POST['login']);
         $stmt->execute();
-        //$_SESSION['msg'] = "Вы успешно вошли в систему";
-        // return generated id
-        // $id = $pdo->lastInsertId('id');
 
     } catch (PDOexception $error) {
         $msg = "Ошибка аутентификации: " . $error->getMessage();
@@ -18,7 +15,7 @@ if (isset($_POST["login"]) and $_POST["login"]!='')
     // если удалось получить строку с паролем из БД
     if ($row=$stmt->fetch(PDO::FETCH_LAZY))
     {
-        if (MD5($_POST["password"])!= $row['md5password']) $msg = "Неправильный пароль!";
+        if (MD5($_POST["password"])!= MD5($row['md5password'])) $msg = "Неправильный пароль!";
         else {
             // успешная аутентификация
             $_SESSION['login'] = $_POST['login'];

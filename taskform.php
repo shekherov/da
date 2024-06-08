@@ -7,7 +7,7 @@
             </label>
         <p><label>
                 Категория: <select name="id_categories">
-                    <?
+                    <?php
                     $result = $conn->query("SELECT * FROM categories");
                     while ($row = $result->fetch()) {
                         echo '<option value='.$row['id_categories'].'>'.$row['name'].'</option>';

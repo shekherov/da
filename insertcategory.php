@@ -20,7 +20,7 @@
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':name', $_POST['name']);
             $stmt->bindValue(':picture_url', $picture_url);
-            $stmt->bindValue(':id_user', $_SESSION['id']);
+            $stmt->bindValue(':id_user', $_SESSION['id_user']);
             $stmt->execute();
             $_SESSION['msg'] = "Категория успешно добавлена";
             // return generated id
