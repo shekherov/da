@@ -2,15 +2,15 @@
     require "dbconnect.php";
 
     try {
-        echo ("SELECT * FROM categories WHERE categories.id_categories=".$_GET['id']);
-        $result = $conn->query("SELECT * FROM categories WHERE categories.id_categories=".$_GET['id']);
+        echo ("SELECT * FROM categories");
+        $result = $conn->query("SELECT * FROM categories");
         $row = $result->fetch();
         try {
             $resource = Container::getFileUploader()->delete($row['picture_url']);
         } catch (S3Exception $e) {
             $_SESSION['msg'] = $e->getMessage();
         }
-        $result = $conn->query("SELECT * FROM categories WHERE id_user=". $_SESSION['id']." AND id_categories=".$_GET['id']);
+        $result = $conn->query("SELECT * FROM categories");
         if ($result->rowCount() == 0) throw new PDOException('Категория не найдена', 1111 );
         $sql = 'DELETE FROM categories WHERE id_categories=:id';
         $stmt = $conn->prepare($sql);

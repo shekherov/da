@@ -2,7 +2,7 @@
     require "dbconnect.php";
     if (strlen($_POST['name']) >= 3){
         //получение загруженного файла
-        if ($file = fopen($_FILES['filename']['tmp_name'], 'r+')){
+        if ($file = fopen($_FILES['filename']['tmp_name'])){
             //получение расширения
             $ext = explode('.', $_FILES["filename"]["name"]);
             $ext = $ext[count($ext) - 1];
@@ -16,10 +16,9 @@
             $picture_url = '/assets/calendar.png';
         }
         try {
-            $sql = 'INSERT INTO categories(name, picture_url, id_user) VALUES(:name,:picture_url,:id_user)';
+            $sql = 'INSERT INTO categories(name, id_user) VALUES(:name,:id_user)';
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':name', $_POST['name']);
-            $stmt->bindValue(':picture_url', $picture_url);
             $stmt->bindValue(':id_user', $_SESSION['id_user']);
             $stmt->execute();
             $_SESSION['msg'] = "Категория успешно добавлена";
