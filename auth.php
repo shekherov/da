@@ -19,9 +19,9 @@ if (isset($_POST["login"]) and $_POST["login"]!='')
         else {
             // успешная аутентификация
             $_SESSION['login'] = $_POST['login'];
-            $_SESSION['firstname'] = $row['firstname'];
-            $_SESSION['lastname'] = $row['lastname'];
-            $_SESSION['id'] = $row['id'];
+            $_SESSION['firstname'] = $_POST['firstname'];
+            $_SESSION['lastname'] = $_POST['lastname'];
+            $_SESSION['id_user'] = $_POST['id_user'];
             //if ($row['is_teacher']==1) $_SESSION['teacher'] = true;
             $msg =  "Вы успешно вошли в систему";
         }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 07 2024 г., 18:06
+-- Время создания: Июн 08 2024 г., 20:48
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -40,7 +40,9 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id_categories`, `name`, `id_user`) VALUES
 (1, 'Горячие', 1),
 (2, 'Холодные', 2),
-(3, 'Салаты', 3);
+(3, 'Салаты', 3),
+(4, 'Бодрые', 1),
+(5, 'Заморское', 1);
 
 -- --------------------------------------------------------
 
@@ -65,11 +67,11 @@ INSERT INTO `dishes` (`id_dishes`, `name`, `Cooking_Method`, `Cooking_Time_in_mi
 (1, 'Шашлык - Мясной обитель - свиной', 'Копчение на углях', 120, 1, 1),
 (2, 'Шашлык - Благосклонность природы - грибной', 'Копчение на углях', 120, 1, 1),
 (3, 'Шашлык - Рай из глубин - рыбный', 'Копчение на углях', 120, 1, 1),
-(4, 'Суп - Котёл тысячи сердец - Борщ', 'Варка', 90, 2, 2),
-(5, 'Суп - Всё из ничего - Солянка', 'Варка', 90, 2, 2),
+(4, 'Суп - Котёл тысячи сердец - борщ', 'Варка', 90, 2, 2),
+(5, 'Суп - Всё из ничего - солянка', 'Варка', 90, 2, 2),
 (6, 'Суп - Сногсшибательный - Гороховый', 'Варка', 90, 2, 2),
-(7, 'Салат - Новогодний – Цезарь', 'Смешивание ингредиентов', 25, 3, 3),
-(8, 'Салат - Деревенский – Ёжик', 'Смешивание ингредиентов', 15, 3, 3),
+(7, 'Салат - Новогодний - Цезарь', 'Смешивание ингредиентов', 25, 3, 3),
+(8, 'Салат - Деревенский - Ёжик', 'Смешивание ингредиентов', 15, 3, 3),
 (9, 'Салат - Поход дьявола - Винегрет', 'Смешивание ингредиентов', 40, 3, 3);
 
 -- --------------------------------------------------------
@@ -165,7 +167,7 @@ ALTER TABLE `categories`
 -- Индексы таблицы `dishes`
 --
 ALTER TABLE `dishes`
-  ADD PRIMARY KEY (`id_dishes`),
+  ADD PRIMARY KEY (`id_dishes`) USING BTREE,
   ADD KEY `id_categories` (`id_categories`),
   ADD KEY `id_user` (`id_user`);
 
@@ -197,7 +199,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_categories` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_categories` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT для таблицы `dishes`
+--
+ALTER TABLE `dishes`
+  MODIFY `id_dishes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `user`
@@ -220,8 +228,7 @@ ALTER TABLE `categories`
 --
 ALTER TABLE `dishes`
   ADD CONSTRAINT `dishes_ibfk_1` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id_categories`),
-  ADD CONSTRAINT `dishes_ibfk_2` FOREIGN KEY (`id_dishes`) REFERENCES `recipe` (`id_dishes`),
-  ADD CONSTRAINT `dishes_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+  ADD CONSTRAINT `dishes_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Ограничения внешнего ключа таблицы `ingredients`

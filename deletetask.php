@@ -4,7 +4,7 @@ require "dbconnect.php";
 
 
     try {
-        $sql = 'DELETE FROM dishes WHERE id_dishes=:id';
+        $sql = 'DELETE FROM dishes WHERE dishes_id_dishes=:id';
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':id', $_GET['id']);
         $stmt->execute();
