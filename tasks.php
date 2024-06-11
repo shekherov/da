@@ -1,34 +1,29 @@
 <div class="container">
+<?php
+$result = $conn->query("SELECT dishes.id_dishes AS id, dishes.name AS dname FROM dishes");
 
-
-
-
-
-<h1>Блюда:</h1>
-    <div class="list-group">
-
-
-
-
-    <?php
-
-    $result = $conn->query("SELECT *, dishes.id_dishes AS id_dishes, categories.name AS cname, dishes.name AS dname FROM dishes, categories WHERE dishes.id_categories=categories.id_categories");
-    while ($row = $result->fetch()) {
-
+while ($row = $result->fetch()) {
+//style="max-width: 18rem;"
     echo '
-
-            <a href="#" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
-            <img src="'.$row['picture_url'].'" alt="twbs" width="32" height="32" class=flex-shrink-0">
-            <div class="d-flex gap-2 w-100 justify-content-between">
-                <div>
-                    <h6 class="mb-0">'.$row['dname'].'</h6>
+        
+        <div class="card border-dark mb-3" >
+            <div class="card-body text-dark">
+                <div class="row g-0">
+                    <div class="col-md-1">  
+                        <img src="' . $row['picture_url'] . '" alt="Task picture" height="60px">
+                    </div>
+                    <div class="col-md-7">
+                    <a class="nav-link" href="/index.php?page=t" >
+                        <h5 class="card-title">' . $row['dname'] . '</h5>
+                    </a>
+                    </div>
+                    <div class="col-md-1">
+                        <a href="deletetask.php?id=' . $row['id'] . '"class="btn btn-danger">Удалить</a>
+                    </div>
                 </div>
             </div>
-        </a>
-';
-
-
-    }
-    ?>
-</div class="list-group">
-</div>
+            
+        </div>
+ </div>';
+}
+?>

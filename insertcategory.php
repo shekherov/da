@@ -19,7 +19,7 @@
             $sql = 'INSERT INTO categories(name, id_user) VALUES(:name,:id_user)';
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':name', $_POST['name']);
-            $stmt->bindValue(':id_user', $_SESSION['id_user']);
+            $stmt->bindValue(':id_user', $_POST['id_user']);
             $stmt->execute();
             $_SESSION['msg'] = "Категория успешно добавлена";
             // return generated id

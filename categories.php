@@ -42,10 +42,19 @@ while ($row = $result->fetch()) {
             Имя категории: <input type="text" name="name">
         </label>
     <p><label>
-            Описание категории: <input type="text" name="description">
+            Изображение: <input type="file" name="filename">
         </label>
     <p><label>
-            Изображение: <input type="file" name="filename">
+            Пользователь: <select name="id_user">
+
+                <?php
+                $result = $conn->query("SELECT * FROM user");
+                while ($row = $result->fetch()) {
+                    echo '<option value='.$row['id_user'].'>'.$row['lastname'].'</option>';
+
+                }
+                ?>
+            </select>
         </label>
     <p><input type="submit" value="Создать">
 </form>
