@@ -14,7 +14,11 @@
         // return generated id
         // $id = $pdo->lastInsertId('id');
     } catch (PDOexception $error) {
-        $_SESSION['msg'] = "Ошибка удаления категории: " . $error->getMessage();
+        if ($error->getCode() == '23000') {
+            $_SESSION['msg'] = "Ошибка удаления категории: данная категория используется в другой таблице и не может быть удалёна";
+        } else {
+            $_SESSION['msg'] = "Ошибка удаления категории: " . $error->getMessage();
+        }
     }
     // перенаправление на главную страницу приложения
     header('Location: http://klek/index.php?page=t#');
