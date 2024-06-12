@@ -1,6 +1,6 @@
 <h1>Категории Блюд:</h1>
 <?php
-$result = $conn->query("SELECT categories.id_categories AS id, categories.name AS cname, count(dishes.id_dishes) as C FROM categories LEFT OUTER JOIN dishes ON categories.id_categories=dishes.id_categories GROUP BY categories.id_categories");
+$result = $conn->query("SELECT categories.id_categories AS id, categories.name AS cname, categories.image, count(dishes.id_dishes) as C FROM categories LEFT OUTER JOIN dishes ON categories.id_categories=dishes.id_categories GROUP BY categories.id_categories");
 
 while ($row = $result->fetch()) {
 //style="max-width: 18rem;"
@@ -11,7 +11,7 @@ while ($row = $result->fetch()) {
             <div class="card-body text-dark">
                 <div class="row g-0">
                     <div class="col-md-1">  
-                        <img src="'.$row['picture_url'].'" alt="Task picture" height="60px">
+                        <img src="'.$row['image'].'" alt="Task picture" height="60px">
                     </div>
                     <div class="col-md-7">
                     <a class="nav-link" href="/index.php?page=t" >
@@ -42,7 +42,10 @@ while ($row = $result->fetch()) {
             Имя категории: <input type="text" name="name">
         </label>
     <p><label>
-            Изображение: <input type="file" name="filename">
+            <div class="mb-3">
+                <input type="text" class="form-control" name="image">
+                <div class="form-text">Введите URL изображения</div>
+            </div>
         </label>
     <p><label>
             Пользователь: <select name="id_user">

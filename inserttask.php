@@ -1,15 +1,15 @@
 <?php
 require "dbconnect.php";
 if (strlen($_POST['name']) >= 3){
-
         try {
-            $sql = 'INSERT INTO dishes(name,Cooking_Method,Cooking_Time_in_min,id_categories,id_user) VALUES(:name,:Cooking_Method,:Cooking_Time_in_min,:id_categories,:id_user)';
+            $sql = 'INSERT INTO dishes(name,Cooking_Method,Cooking_Time_in_min,id_categories,id_user, image) VALUES(:name,:Cooking_Method,:Cooking_Time_in_min,:id_categories,:id_user, :image)';
             $stmt = $conn->prepare($sql);
             $stmt->bindValue(':name', $_POST['name']);
             $stmt->bindValue(':Cooking_Method', $_POST['Cooking_Method']);
             $stmt->bindValue(':Cooking_Time_in_min', $_POST['Cooking_Time_in_min']);
             $stmt->bindValue(':id_categories', $_POST['id_categories']);
             $stmt->bindValue(':id_user', $_POST['id_user']);
+            $stmt->bindValue(':image', $_POST['image']);
             $stmt->execute();
             $_SESSION['msg'] = "Блюдо успешно добавлено";
             // return generated id

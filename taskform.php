@@ -5,6 +5,10 @@
         <p><label>
                 Имя блюда: <input type="text" name="name">
             </label>
+        <div class="mb-3">
+            <input type="text" class="form-control" name="image">
+            <div class="form-text">Введите URL изображения</div>
+        </div>
         <p><label>
                 Метод приготовления: <input type="text" name="Cooking_Method">
         </label>
