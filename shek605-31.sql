@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 08 2024 г., 20:48
+-- Время создания: Июн 12 2024 г., 11:57
 -- Версия сервера: 5.7.33
 -- Версия PHP: 7.1.33
 
@@ -30,19 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `categories` (
   `id_categories` int(11) NOT NULL,
   `name` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_user` int(10) UNSIGNED NOT NULL
+  `id_user` int(10) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `categories`
 --
 
-INSERT INTO `categories` (`id_categories`, `name`, `id_user`) VALUES
-(1, 'Горячие', 1),
-(2, 'Холодные', 2),
-(3, 'Салаты', 3),
-(4, 'Бодрые', 1),
-(5, 'Заморское', 1);
+INSERT INTO `categories` (`id_categories`, `name`, `id_user`, `image`) VALUES
+(1, 'Горячие', 1, 'https://havio.club/uploads/posts/2023-08/1693340387_havio-club-p-banketnie-goryachie-blyuda-krasivo-32.jpg'),
+(2, 'Холодные', 2, 'https://s.mediasole.ru/images/2211/2211084/original.jpg'),
+(3, 'Салаты', 3, 'https://klike.net/uploads/posts/2022-09/1662964118_g-25.jpg'),
+(12, 'Заморские', 1, 'https://avatars.dzeninfra.ru/get-zen_gallery/3129491/pub_5ffdbc50625bfc732d2292ab_5ffdd4f5625bfc732d56fcbf/scale_1200');
 
 -- --------------------------------------------------------
 
@@ -56,23 +56,25 @@ CREATE TABLE `dishes` (
   `Cooking_Method` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `Cooking_Time_in_min` int(20) NOT NULL,
   `id_categories` int(11) NOT NULL,
-  `id_user` int(10) UNSIGNED NOT NULL
+  `id_user` int(10) UNSIGNED NOT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `dishes`
 --
 
-INSERT INTO `dishes` (`id_dishes`, `name`, `Cooking_Method`, `Cooking_Time_in_min`, `id_categories`, `id_user`) VALUES
-(1, 'Шашлык - Мясной обитель - свиной', 'Копчение на углях', 120, 1, 1),
-(2, 'Шашлык - Благосклонность природы - грибной', 'Копчение на углях', 120, 1, 1),
-(3, 'Шашлык - Рай из глубин - рыбный', 'Копчение на углях', 120, 1, 1),
-(4, 'Суп - Котёл тысячи сердец - борщ', 'Варка', 90, 2, 2),
-(5, 'Суп - Всё из ничего - солянка', 'Варка', 90, 2, 2),
-(6, 'Суп - Сногсшибательный - Гороховый', 'Варка', 90, 2, 2),
-(7, 'Салат - Новогодний - Цезарь', 'Смешивание ингредиентов', 25, 3, 3),
-(8, 'Салат - Деревенский - Ёжик', 'Смешивание ингредиентов', 15, 3, 3),
-(9, 'Салат - Поход дьявола - Винегрет', 'Смешивание ингредиентов', 40, 3, 3);
+INSERT INTO `dishes` (`id_dishes`, `name`, `Cooking_Method`, `Cooking_Time_in_min`, `id_categories`, `id_user`, `image`) VALUES
+(1, 'Шашлык - Мясной обитель - свиной', 'Копчение на углях', 120, 1, 1, 'https://vostorg.buzz/uploads/posts/2022-12/1669974146_2-vostorg-buzz-p-svinaya-sheika-dlya-shashlika-2.jpg'),
+(2, 'Шашлык - Благосклонность природы - грибной', 'Копчение на углях', 120, 1, 1, 'https://iraas.ru/wp-content/uploads/2022/01/shashlyk-iz-gribov-neizmenno-aromatnyj-sochnyj-i-vkusnyj.jpg'),
+(3, 'Шашлык - Рай из глубин - рыбный', 'Копчение на углях', 120, 1, 1, 'https://kaminia.ru/wp-content/uploads/0/7/2/07271da1303a01058972114c309bc0f0.jpeg'),
+(4, 'Суп - Котёл тысячи сердец - борщ', 'Варка', 90, 2, 2, 'https://img.razrisyika.ru/kart/56/1200/221406-borsch-2.jpg'),
+(5, 'Суп - Всё из ничего - солянка', 'Варка', 90, 2, 2, 'https://klike.net/uploads/posts/2023-03/1679462817_3-31.jpg'),
+(6, 'Суп - Сногсшибательный - Гороховый', 'Варка', 90, 2, 2, 'https://pic.rutubelist.ru/video/c7/0e/c70ef127f5de303bfbd4b0ecc88601a2.jpg'),
+(7, 'Салат - Новогодний - Цезарь', 'Смешивание ингредиентов', 25, 3, 3, 'https://recipes-home.ru/wp-content/uploads/2022/11/cezar-min.jpg'),
+(8, 'Салат - Деревенский - Ёжик', 'Смешивание ингредиентов', 15, 3, 3, 'http://novogodje.ru/wp-content/uploads/2016/06/novogodnij-salat-ezhik-s-kuricej-i-gribami-2.jpg'),
+(9, 'Салат - Поход дьявола - Винегрет', 'Смешивание ингредиентов', 40, 3, 3, 'https://img.razrisyika.ru/kart/60/236245-vinegret-34.jpg'),
+(12, 'Заморское - Поцелуй Посейдона - Салат с креветками', 'Жарка и смешивание', 120, 12, 1, 'https://avatars.dzeninfra.ru/get-zen_gallery/3129491/pub_5ffdbc50625bfc732d2292ab_5ffdd4f5625bfc732d56fcbf/scale_1200');
 
 -- --------------------------------------------------------
 
@@ -199,13 +201,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблицы `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_categories` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_categories` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `dishes`
 --
 ALTER TABLE `dishes`
-  MODIFY `id_dishes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_dishes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `user`
